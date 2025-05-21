@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+<head>
+	<meta charset=UTF-8>
+	<meta name="viemport" content="wigth=device-width, initial-scale=1.0">
+	<title>Alarm</title>
+	<style> .container{text-align: center; }
+	button{background: #069;color: white;font-size: 32px; padding: 8px 20x; cursor: pointer; border: 0;
+} </style>
+
+</head>
+<body> <audio id="sound" src="Alarm.mp3" style="display: none;"> </audio> 
+<div class= "conteiner">
+<h2>Minutos:</h2>
+<select id="minutos" name="segundos"></select>
+<br/>
+<br/>
+<button id="comecar">Começar!</button>
+
+<div id="display">
+<h3></h3>
+ </div> <!--display-->
+
+</div> <!-- conteiner -->
+
+
+</body>
+
+<script>
+var display = document.getElementbyid('display');
+
+var minutos = document.getElementbyid('minutos');
+var segundos = document.getElementbyid('segundos');
+
+var comecar = document.getElementbyid('comecar');
+
+var cronometroSeg;
+
+var minutoAtual;
+var segundoAtual;
+
+var interval;
+
+for(var i=0; i<=59; i++){
+minutops.innerHTML+='<option value="'+i+'">'+i+'<options>';}
+
+comecar.addEventListener('click', function(){
+miutosAtual = minutos.value;
+segundoAtual = segundos.value;
+
+display.childNodes[1].innerHTML = minutoAtual + ":" + segundoAtual;
+
+interval = setInterval(function() {
+segundoAtual--;
+if (segundoAtual<= 0){
+if (minutoAtual>0){
+minutoAtual--;
+segundoAtual = 59;
+}
+else{document.getElementById("sound").play();
+alert("Desligar Alarme!");
+clearInterval(interval);
+location.reload();
+}
+}
+display.childNodes[1].innerHTML = minutoAtual + ":" + segundoAtual;},1000);
+}
+
+);
+</script>
+
+</body>
+</html>
